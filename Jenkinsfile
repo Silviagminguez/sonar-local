@@ -28,13 +28,24 @@ agent any
 	    ) 
 	    }   
 	 }
-	 stage('Sonarqube') {
+	/* stage('Sonarqube') {
     		environment {
         	scannerHome = tool 'SonarQubeScanner'
     		}
    	    steps {
        		 withSonarQubeEnv('SonarQube') {
            	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties "
+       	    	}
+           }
+   	 }*/
+	    
+	    stage('Sonarqube') {
+    		environment {
+        	scannerHome = tool 'SonarQubeScanner'
+    		}
+   	    steps {
+       		 withSonarQubeEnv('SonarQube') {
+           	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner.properties "
        	    	}
            }
    	 }
