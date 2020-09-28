@@ -34,7 +34,7 @@ agent any
     		}
    	    steps {
        		 withSonarQubeEnv('SonarQube') {
-           	 sh "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties "
+           	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=sonar-scanner.properties "
        	    	}
            }
    	 }
