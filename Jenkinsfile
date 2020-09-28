@@ -45,7 +45,7 @@ agent any
     		}
    	    steps {
        		 withSonarQubeEnv('SonarQube') {
-           	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner.properties "
+           	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
        	    	}
            }
    	 }
