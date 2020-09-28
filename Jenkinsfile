@@ -6,6 +6,11 @@
 def server_up = false
 
 pipeline {
+	environment{
+		URL="https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
+	}
+	
+	
 agent any
 //    agent { label "sdk5" }
     stages {
@@ -45,7 +50,7 @@ agent any
     		}
    	    steps {
        		 withSonarQubeEnv('SonarQube') {
-           	 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
+			 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings=${URL}"
        	    	}
            }
    	 }
