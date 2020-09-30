@@ -9,7 +9,7 @@ pipeline {
 	environment{
 		URL_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
 		scannerHome = tool 'SonarQubeScanner'
-			
+		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
 	
 	
