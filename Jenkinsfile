@@ -7,7 +7,9 @@ def server_up = false
 
 pipeline {
 	environment{
-		PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
+		URL_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
+		scannerHome = tool 'SonarQubeScanner'
+			
 	}
 	
 	
@@ -43,11 +45,25 @@ pipeline {
 			}
 		   }
 		 }*/
+			
+	stage('Checkout Project Sonar Properties') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+                doGenerateSubmoduleConfigurations: false, 
+                extensions: [], 
+                gitTool: 'default', 
+                submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                            credentialsId: 'GithubCredentials',
+                            url: "$URL_PROPERTIES"
+                        ]]
+                ])
+            }
+              
+        }
 
 		    stage('Sonarqube') {
-			environment {
-			scannerHome = tool 'SonarQubeScanner'
-			}
+			
 		    steps {
 			 withSonarQubeEnv('SonarQube') {
 				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings='https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties'"
