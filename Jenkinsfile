@@ -7,7 +7,7 @@ def server_up = false
 
 pipeline {
 	environment{
-		URL_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties"
+		URL_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
 		scannerHome = tool 'SonarQubeScanner'
 			
 	}
