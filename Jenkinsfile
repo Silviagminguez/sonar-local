@@ -50,7 +50,7 @@ pipeline {
 			}
 		    steps {
 			 withSonarQubeEnv('SonarQube') {
-				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings='/sonar-properties.git/sonar-scanner-wefferent.properties'"
+				 bat "${scannerHome}/bin/sonar-scanner -X -Dproject.settings='https://github.com/Silviagminguez/sonar-properties.git/sonar-scanner-wefferent.properties'"
 			}
 		   }
 		 }
