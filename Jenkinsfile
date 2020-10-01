@@ -10,28 +10,13 @@ pipeline {
 		GIT_PROJECT = "https://github.com/Silviagminguez/sonar-local.git"
 		GIT_PROJECT_PROPERTIES = "https://github.com/Silviagminguez/sonar-properties.git"
 		scannerHome = tool 'SonarQubeScanner'
-		sonar_properties_workspace = '/C/Jenkins/workspace/sonar/sonar-scanner.properties'	
 	}
 	
 	
 	agent any
 	//    agent { label "sdk5" }
 	    stages {
-		 stage('Checkout Project properties') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
-                doGenerateSubmoduleConfigurations: false, 
-                extensions: [], 
-                gitTool: 'default', 
-                submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                            credentialsId: 'GithubCredentials',
-                            url: "$GIT_PROJECT_PROPERTIES"
-                        ]]
-                ])
-            }
-              
-        }    
+		
 	stage('Checkout Project') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
